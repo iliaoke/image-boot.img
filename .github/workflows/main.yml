@@ -50,6 +50,7 @@ jobs:
            ./magiskboot repack boot.img
            tree
            find . -maxdepth 1 ! -name 'magiskboot' ! -name 'new-boot.img' -exec rm -rf {} \;
+           tree
 
     - name: Get latest tag from bmax121/kernelpatch
       id: latest_tag_kernelpatch

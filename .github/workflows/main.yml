@@ -82,3 +82,9 @@ jobs:
         ./kptools -p --image kernel-b --skey "8888" --kpimg kpimg-android --out kernel
         ./magiskboot repack boot.img
         tree
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@main
+      with:
+        name: new-boot.img
+        path: new-boot.img

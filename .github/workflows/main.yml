@@ -40,7 +40,8 @@ jobs:
 
 
     - name: build boot.img
-      run: ./magiskboot unpack boot.img
+      run: |
+           ./magiskboot unpack boot.img
            tree
            rm kernel
            wget https://github.com/liaoke01/image-boot.img/blob/main/kernel.7z

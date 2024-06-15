@@ -79,6 +79,7 @@ jobs:
         chmod 777 kptools
         mv new-boot.img boot.img
         ./magiskboot unpack boot.img
+        mv kernel kernel-b
         ./kptools -p --image kernel-b --skey "8888" --kpimg kpimg-android --out kernel
         ./magiskboot repack boot.img
         tree

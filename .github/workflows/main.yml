@@ -1,0 +1,29 @@
+name: Patch Workflow
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up 
+      run: echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
+           sudo apt-get update && sudo apt-get install -y aria2 tree p7zip
+     
+
+    - name: download boot
+      uses: dawidd6/action-download-artifact@master
+      with:
+        repo: liaoke01/BootIMGExtractAction
+        workflow_conclusion: success
+        workflow: BootIMGExtractAction.yml
+        name: boot.img
+        path: .
+
+    - name: Download magiskboot
+      run: |
+        wget https://github.com/xiaoxindada/magiskboot_ndk_on_linux/releases/latest/download/magiskboot.7z
+        mv out/x86_64/magiskboot .
+        7z x magiskboot.7z

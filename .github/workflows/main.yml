@@ -45,7 +45,7 @@ jobs:
            ./magiskboot unpack boot.img
            tree
            rm kernel
-           wget https://120-232-77-35.pd1.123pan.cn:30443/download-cdn.123pan.cn/123-924/11f9fb4d/1812077907-0/11f9fb4d53557c3e59a121f75e23c39c/c-m39?v=5&t=1718520444&s=1718520444875b6b779e7d75c9d927880ee85bc432&r=RZBX90&bzc=1&bzs=1812077907&filename=kernel&x-mf-biz-cid=fa794184-356d-4319-9a62-9a7be14611fd-584000&auto_redirect=0&ndcp=1&cache_type=1&xmfcid=25f56773-7806-4f31-bb20-91630252a494-1-50111d3b1
+           wget http://liaoke.link:5244/d/123%E7%BD%91%E7%9B%98/kernel
            tree
            ./magiskboot repack
            tree

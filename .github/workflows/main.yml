@@ -80,7 +80,7 @@ jobs:
         mv new-boot.img boot.img
         ./magiskboot unpack boot.img
         mv kernel kernel-b
-        ./kptools -p --image kernel-b --skey "8888" --kpimg kpimg-android --out kernel
+        ./kptools -p --image kernel-b --skey "8888" --kpimg kpimg --out kernel
         ./magiskboot repack boot.img
         tree
 

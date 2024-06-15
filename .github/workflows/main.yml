@@ -48,7 +48,6 @@ jobs:
            wget http://liaoke.link:5244/d/123%E7%BD%91%E7%9B%98/kernel
            tree
            ./magiskboot repack boot.img
-           rm -r !(magiskboot|new-boot.img)
            tree
 
     - name: Get latest tag from bmax121/kernelpatch

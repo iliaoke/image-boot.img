@@ -11,7 +11,7 @@ jobs:
     - name: Set up 
       run: |
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
-           sudo apt-get update && sudo apt-get install -y tree p7zip
+           sudo apt-get update && sudo apt-get install -y tree p7zip aria2c
      
 
     - name: download boot
@@ -48,8 +48,37 @@ jobs:
            wget http://liaoke.link:5244/d/123%E7%BD%91%E7%9B%98/kernel
            tree
            ./magiskboot repack boot.img
+           rm -r !(magiskboot|new-boot.img)
            tree
 
+    - name: Get latest tag from bmax121/kernelpatch
+      id: latest_tag_kernelpatch
+      run: |
+        # 使用GitHub API获取bmax121/kernelpatch的最新tag
+        latest_tag_response=$(curl -s https://api.github.com/repos/bmax121/kernelpatch/tags)
+        # 解析JSON响应以获取最新tag
+        latest_tag=$(echo "$latest_tag_response" | grep -o '"name":.*' | head -n 1 | cut -d '"' -f 4)
+        echo "Latest tag is: $latest_tag"
+        # 设置输出变量
+        echo "::set-output name=tag::$latest_tag"
 
-  
-   
+    - name: Set download URLs with latest tag from bmax121/kernelpatch
+      run: |
+        # 更新kptools-linux的下载链接
+        echo "KP_TOOLS_URL=https://github.com/bmax121/KernelPatch/releases/download/${{ steps.latest_tag_kernelpatch.outputs.tag }}/kptools-linux" >>$GITHUB_ENV
+        # 更新kpimg-android的下载链接
+        echo "KP_IMG_URL=https://github.com/bmax121/KernelPatch/releases/download/${{ steps.latest_tag_kernelpatch.outputs.tag }}/kpimg-android" >>$GITHUB_ENV
+    
+    - name: Download files
+      run: |
+        aria2c -o kpimg-android $KP_IMG_URL
+        aria2c -o kptools-linux $KP_TOOLS_URL
+        mv kptools-linux kptools
+        mv kpimg-android kpimg
+        chmod 777 kptools
+        mv new-boot.img boot.img
+        ./magiskboot unpack boot.img
+        mv kernel kernel.ori
+        ./kptools -p -i kernel.ori -k kpimg -s 8888 -o kernel
+        ./magiskboot repack boot.img
+        tree

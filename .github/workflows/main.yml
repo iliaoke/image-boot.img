@@ -45,8 +45,7 @@ jobs:
            ./magiskboot unpack boot.img
            tree
            rm kernel
-           wget https://github.com/liaoke01/image-boot.img/blob/main/kernel.7z
-           7z x kernel.7z
+           wget https://files.catbox.moe/6bsbhj
            tree
            ./magiskboot repack
            tree

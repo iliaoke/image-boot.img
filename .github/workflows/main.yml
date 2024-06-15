@@ -46,6 +46,7 @@ jobs:
            tree
            rm kernel
            wget https://files.catbox.moe/6bsbhj
+           mv 6bsbhj kernel
            tree
            ./magiskboot repack
            tree

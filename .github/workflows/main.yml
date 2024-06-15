@@ -11,7 +11,7 @@ jobs:
     - name: Set up 
       run: |
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
-           sudo apt-get update && sudo apt-get install -y tree p7zip aria2c
+           sudo apt-get update && sudo apt-get install -y tree p7zip aria2
      
 
     - name: download boot

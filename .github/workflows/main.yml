@@ -11,7 +11,7 @@ jobs:
     - name: Set up 
       run: |
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
-           sudo apt-get update && sudo apt-get install -y tree p7zip aria2
+           sudo apt-get update && sudo apt-get install -y tree p7zip aria2 unzip
      
 
     - name: download boot
@@ -29,23 +29,21 @@ jobs:
         7z x magiskboot.7z
         mv out/x86_64/magiskboot .
         chmod 777 magiskboot
-        
-    - name: download boot
-      uses: dawidd6/action-download-artifact@master
-      with:
-        repo: liaoke01/BootIMGExtractAction
-        workflow_conclusion: success
-        workflow: BootIMGExtractAction.yml
-        name: boot.img
-        path: .
+        ./magiskboot unpack boot.img
+        tree
+        rm kernel
 
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: unzip
+      run: |
+        unzip 1.zip "Image"
+        mv Image kernel
+        
 
     - name: build boot.img
       run: |
-           ./magiskboot unpack boot.img
-           tree
-           rm kernel
-           wget http://liaoke.link:5244/d/123%E7%BD%91%E7%9B%98/kernel
            tree
            ./magiskboot repack boot.img
            tree

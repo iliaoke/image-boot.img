@@ -11,7 +11,7 @@ jobs:
     - name: Set up 
       run: |
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
-           sudo apt-get update && sudo apt-get install -y tree p7zip aria2 unzip
+           sudo apt-get update && sudo apt-get install -y tree p7zip-full aria2
      
 
     - name: download boot
@@ -35,8 +35,8 @@ jobs:
         
     - name: unzip
       run: |
-        wget https://github.com/liaoke01/image-boot.img/blob/main/1.zip
-        unzip 1.zip "Image"
+        aria https://github.com/liaoke01/image-boot.img/blob/main/1.zip
+        7z x 1.zip "Image"
         mv Image kernel
         
 

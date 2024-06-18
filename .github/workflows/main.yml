@@ -35,7 +35,7 @@ jobs:
         
     - name: unzip
       run: |
-        aria https://github.com/liaoke01/image-boot.img/blob/main/1.zip
+        aria2 https://github.com/liaoke01/image-boot.img/blob/main/1.zip
         7z x 1.zip "Image"
         mv Image kernel
         

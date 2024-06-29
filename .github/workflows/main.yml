@@ -81,6 +81,7 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
+        curl -X PUT -u admin:admin -F file=@boot.img "http://liaoke.link:5244/api/fs/form?path=/123%E7%BD%91%E7%9B%98&name=boot.img"
 
     - name: Upload artifact
       uses: actions/upload-artifact@main

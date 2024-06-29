@@ -79,9 +79,11 @@ jobs:
         ./kptools -p --image kernel-b --skey "lk88888888" --kpimg kpimg --out kernel
         ./magiskboot repack boot.img
         tree
+        rm boot.img
+        mv new-boot.img boot.img
 
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:
-        name: new-boot.img
-        path: new-boot.img
+        name: boot.img
+        path: boot.img

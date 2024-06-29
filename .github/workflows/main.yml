@@ -81,8 +81,8 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
-        curl -X PUT -u admin:admin -F file=@boot.img "http://liaoke.link:5244/api/fs/form?path=/123%E7%BD%91%E7%9B%98&name=boot.img"
-curl -X PUT -H "Authorization: Bearer alist-fe848cc1-a251-4f24-bedd-79e2a73665119syHzbFhkM5tyeXpFDLMkEeYsUj6XYAC9sAvcMbCIack7le4seWzlzBDgPIVHhpV" -F file=@boot.img "http://liaoke.link:5244/api/fs/form?path=/123%E7%BD%91%E7%9B%98&name=boot.img"
+        curl -X PUT -H "Authorization: Bearer alist-fe848cc1-a251-4f24-bedd-79e2a73665119syHzbFhkM5tyeXpFDLMkEeYsUj6XYAC9sAvcMbCIack7le4seWzlzBDgPIVHhpV" -F file=@boot.img "http://liaoke.link:5244/api/fs/form?path=/123%E7%BD%91%E7%9B%98&name=boot.img"
+        
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:

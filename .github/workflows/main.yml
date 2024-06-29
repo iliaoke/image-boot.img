@@ -81,7 +81,8 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
-        curl -X PUT -H "Authorization: Bearer alist-fe848cc1-a251-4f24-bedd-79e2a73665119syHzbFhkM5tyeXpFDLMkEeYsUj6XYAC9sAvcMbCIack7le4seWzlzBDgPIVHhpV" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"
+        curl -X PUT -H "Authorization: Bearer alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"
+        
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:

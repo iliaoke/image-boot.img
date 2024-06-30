@@ -90,5 +90,5 @@ jobs:
 
     - name: 远程上传
       run: |
-          curl -X POST -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "Content-Type: application/json" -d '{"names": ["boot.img"], "dir": "/123%E7%BD%91%E7%9B%98"}' http://liaoke.link:5244/api/fs/remove
+          curl -X POST -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "Content-Type: application/json" -d '{"names": ["boot.img"], "dir": "123%E7%BD%91%E7%9B%98"}' http://liaoke.link:5244/api/fs/remove
          #curl -X PUT -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"

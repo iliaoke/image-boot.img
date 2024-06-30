@@ -81,10 +81,13 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
-        curl -X PUT -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"
         
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:
         name: boot.img
         path: boot.img
+
+    - name: 远程上传
+      run: curl -X PUT -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"
+        

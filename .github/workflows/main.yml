@@ -11,7 +11,7 @@ jobs:
     - name: Set up 
       run: |
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
-           sudo apt-get update && sudo apt-get install -y tree p7zip-full aria2
+           sudo apt-get update && sudo apt-get install -y tree p7zip-full aria2 jq
      
 
     - name: download boot
@@ -90,5 +90,6 @@ jobs:
 
     - name: 远程上传
       run: |
-          curl -X POST -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "Content-Type: application/json" -d '{"names": ["boot.img"], "dir": "123网盘"}' http://liaoke.link:5244/api/fs/remove
-          curl -X PUT -H "Authorization: alist-4986adbe-3fea-4b16-a2c2-234d1c688ff5uRkCq6lLpYVCNzyfXVxHVe59qTf7CICi1gqbIS3VnZjApcwVzA8qgWst436BFiJW" -H "As-Task: true" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"
+          token=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"admin\"}" http://liaoke.link:5244/api/auth/login | jq -r '.data.token')
+          curl -X POST -H "Authorization: $token" -H "Content-Type: application/json" -d '{"names": ["boot.img"], "dir": "123网盘"}' http://liaoke.link:5244/api/fs/remove
+          curl -X PUT -H "Authorization: $token" -H "As-Task: true" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.link:5244/api/fs/put"

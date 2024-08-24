@@ -11,6 +11,8 @@ jobs:
     - name: Set up 
       run: |
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
+           export DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
+           echo "DATE=$DATE" >> $GITHUB_ENV
            sudo apt-get update && sudo apt-get install -y tree p7zip-full aria2 jq
      
 
@@ -83,12 +85,12 @@ jobs:
         rm boot.img
         mv new-boot.img boot.img
         
-    - name: Upload artifact
-      uses: actions/upload-artifact@main
+    - name: Release
+      uses: softprops/action-gh-release@master
       with:
-        name: boot.img
-        path: boot.img
-
+          tag_name: ${{env.DATE}}
+          files: ./boot.img
+          
     - name: 远程上传
       run: |
           token=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"admin\"}" http://liaoke.online:5244/api/auth/login | jq -r '.data.token')

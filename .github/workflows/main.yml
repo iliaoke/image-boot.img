@@ -84,7 +84,13 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
-        
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@main
+      with:
+       name: boot.img
+       path: boot.img
+  
     - name: Release
       uses: softprops/action-gh-release@master
       with:

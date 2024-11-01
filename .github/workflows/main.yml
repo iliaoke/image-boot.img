@@ -19,7 +19,7 @@ jobs:
     - name: download boot
       uses: dawidd6/action-download-artifact@master
       with:
-        repo: liaoke01/BootIMGExtractAction
+        repo: iliaoke/BootIMGExtractAction
         workflow_conclusion: success
         workflow: BootIMGExtractAction.yml
         name: boot.img

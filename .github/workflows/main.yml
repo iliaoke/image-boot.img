@@ -71,10 +71,10 @@ jobs:
     
     - name: Download files
       run: |
-        #aria2c -o kpimg-android $KP_IMG_URL
-        #aria2c -o kptools-linux $KP_TOOLS_URL
-        aria2c -o kpimg-android https://github.com/bmax121/KernelPatch/releases/latest/download/kpimg-android
-        aria2c -o kptools-linux https://github.com/bmax121/KernelPatch/releases/latest/download/kptools-linux
+        aria2c -o kpimg-android $KP_IMG_URL
+        aria2c -o kptools-linux $KP_TOOLS_URL
+        #aria2c -o kpimg-android https://github.com/bmax121/KernelPatch/releases/latest/download/kpimg-android
+        #aria2c -o kptools-linux https://github.com/bmax121/KernelPatch/releases/latest/download/kptools-linux
         mv kptools-linux kptools
         mv kpimg-android kpimg
         chmod 777 kptools

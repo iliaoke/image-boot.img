@@ -13,7 +13,7 @@ jobs:
            echo "PATCHVBMETAFLAG=true" >> $GITHUB_ENV
            export DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
            echo "DATE=$DATE" >> $GITHUB_ENV
-           sudo apt-get update && sudo apt-get install -y tree p7zip-full aria2 jq
+           sudo apt-get update && sudo apt-get install -y tree p7zip-full aria2 jq tar
      
 
     - name: download boot
@@ -40,7 +40,8 @@ jobs:
       run: |
         #aria2c http://liaoke.online:5244/d/123%E7%BD%91%E7%9B%98/1.zip
         aria2c https://raw.githubusercontent.com/iliaoke/image-boot.img/main/1.zip
-        7z x 1.zip "Image"
+        7z x 1.zip "Image.gz"
+        tar -xvzf Image.gz -C .
         mv Image kernel
         
 

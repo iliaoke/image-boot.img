@@ -90,6 +90,7 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
+        zip -9 boot.zip boot.img
         ls
     - name: Upload artifact
       uses: actions/upload-artifact@main
@@ -101,10 +102,10 @@ jobs:
       uses: softprops/action-gh-release@v2.2.1
       with:
           tag_name: ${{env.DATE}}
-          files: boot.img
+          files: boot.zip
           
     - name: 远程上传
       run: |
           token=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"admin\"}" http://liaoke.online:5244/api/auth/login | jq -r '.data.token')
-          curl -X POST -H "Authorization: $token" -H "Content-Type: application/json" -d '{"names": ["boot.img"], "dir": "123网盘"}' http://liaoke.online:5244/api/fs/remove
-          curl -X PUT -H "Authorization: $token" -H "As-Task: true" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.img" -H "Content-Type: application/octet-stream" --data-binary @boot.img "http://liaoke.online:5244/api/fs/put"
+          curl -X POST -H "Authorization: $token" -H "Content-Type: application/json" -d '{"names": ["boot.zip"], "dir": "123网盘"}' http://liaoke.online:5244/api/fs/remove
+          curl -X PUT -H "Authorization: $token" -H "As-Task: true" -H "File-Path: /123%E7%BD%91%E7%9B%98/boot.zip" -H "Content-Type: application/octet-stream" --data-binary @boot.zip "http://liaoke.online:5244/api/fs/put"

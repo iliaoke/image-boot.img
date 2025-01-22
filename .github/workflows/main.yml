@@ -28,7 +28,7 @@ jobs:
     - name: Download magiskboot
       run: |
         wget https://github.com/xiaoxindada/magiskboot_ndk_on_linux/releases/latest/download/magiskboot.7z
-        7z  -mf=off magiskboot.7z
+        7z  -mf=off x magiskboot.7z
         mv ./x86_64/magiskboot .
         chmod 777 magiskboot
         ./magiskboot unpack boot.img

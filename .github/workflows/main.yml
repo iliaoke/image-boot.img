@@ -100,7 +100,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-          #tag_name: ${{env.DATE}}
+          tag_name: ${{env.DATE}}
           files: boot.img
           
     - name: 远程上传

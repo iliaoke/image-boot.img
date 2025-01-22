@@ -90,7 +90,7 @@ jobs:
         tree
         rm boot.img
         mv new-boot.img boot.img
-
+        ls
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:
@@ -98,10 +98,10 @@ jobs:
        path: boot.img
   
     - name: Release
-      uses: softprops/action-gh-release@v2.2.0
+      uses: softprops/action-gh-release@v2.2.1
       with:
-          tag_name: ${{env.DATE}}
-          files: ./boot.img
+          #tag_name: ${{env.DATE}}
+          files: boot.img
           
     - name: 远程上传
       run: |

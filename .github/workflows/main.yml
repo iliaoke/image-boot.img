@@ -42,7 +42,8 @@ jobs:
         aria2c https://raw.githubusercontent.com/iliaoke/image-boot.img/main/1.zip
         7z x 1.zip "Image.gz"
         ls
-        7z x Image.gz ./
+        gzip -d ./Image.gz
+        ls
         mv Image kernel
         
 
